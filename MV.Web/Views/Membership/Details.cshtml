@@ -1,0 +1,17 @@
+﻿@model MV.Web.Models.Membership
+
+<h1> Mitgliedschaft </h1>
+
+@Html.DisplayNameFor(model => model.MembershipNo): @Html.DisplayFor(model => model.MembershipNo)
+<br />
+
+@Html.DisplayNameFor(model => model.Members):
+<ul>
+    @if (Model.Members != null)
+    {
+        @foreach (var Person in Model.Members)
+        {
+            <li>@Person.Firstname @Person.Surname</li>
+        }
+    }
+</ul>
