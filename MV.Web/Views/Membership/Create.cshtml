@@ -1,0 +1,71 @@
+@model MV.Web.Models.Person
+
+<h1> Neue Mitgliedschaft </h1>
+
+<form asp-action="Create">
+<div>
+    <div class="form-group">
+        <label for="firstname">@Html.DisplayNameFor(model => model.Firstname)
+            <input asp-for="Firstname" type="text" class="form-control">
+        </label>
+    </div>
+
+    <div class="surname">
+        <label for="surname">@Html.DisplayNameFor(model => model.Surname)
+            <input asp-for="Surname" type="text" class="form-control">
+        </label>
+    </div>
+
+    <div class="dateofbirth">
+        <label for="dateofbirth">@Html.DisplayNameFor(model => model.DateOfBirth)
+            <input asp-for="DateOfBirth" type="date" class="form-control">
+        </label>
+    </div>
+
+    <div class="email">
+        <label for="email">@Html.DisplayNameFor(model => model.Email)
+            <input asp-for="Email" type="email" class="form-control">
+        </label>
+    </div>
+
+    <div class="street">
+        <label for="street">@Html.DisplayNameFor(model => model.Street)
+            <input asp-for="Street" type="text" class="form-control">
+        </label>
+    </div>
+
+    <div class="housnumber">
+        <label for="housnumber">@Html.DisplayNameFor(model => model.Housenumber)
+            <input asp-for="Housenumber" type="number" class="form-control">
+        </label>
+    </div>
+
+    <div class="zipcode">
+        <label for="zipcode">@Html.DisplayNameFor(model => model.Zipcode)
+            <input asp-for="Zipcode" type="number" class="form-control">
+        </label>
+    </div>
+
+    <div class="city">
+        <label for="city">@Html.DisplayNameFor(model => model.City)
+            <input asp-for="City" type="text" class="form-control">
+        </label>
+    </div>
+
+</div>
+
+
+<div>
+    <button type="submit" class="btn btn-secondary">Speichern</button>
+</div>
+</form>
+
+<template id="input">
+
+</template>
+
+
+
+
+
+@*  *@

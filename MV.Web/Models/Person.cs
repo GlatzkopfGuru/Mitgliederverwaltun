@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+
 namespace MV.Web.Models
 {
   public class Person
@@ -7,7 +9,7 @@ namespace MV.Web.Models
     {
     }
     public int ID { get; set; }
-
+    [DisplayName("Vorname")]
     public string Firstname { get; set; }
     public string Surname { get; set; }
     public DateTime DateOfBirth { get; set; }

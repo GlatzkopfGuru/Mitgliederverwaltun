@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MV.Web.Data;
+using MV.Web.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,5 +34,19 @@ namespace MV.Web.Controllers
       var membership = await _context.Memberships.Include(me => me.Members).FirstOrDefaultAsync(mem => mem.ID == Id);
       return View(membership);
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(Person person)
+    {
+      return RedirectToAction("Create");
+    }
+
   }
 }
