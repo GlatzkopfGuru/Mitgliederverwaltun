@@ -2,56 +2,68 @@
 
 <h1> Neue Mitgliedschaft </h1>
 
-<form asp-action="Create">
-<div>
-    <div class="form-group">
-        <label for="firstname">@Html.DisplayNameFor(model => model.Firstname)
+<form asp-action="Create" class="needs-validation" novalidate>
+<div class="form-group">
+    <div class="col-6">
+
+    <div class="row">
+        <div class="col-6 pl-0">
+            <label asp-for="Firstname"> </label>
             <input asp-for="Firstname" type="text" class="form-control">
-        </label>
-    </div>
-
-    <div class="surname">
-        <label for="surname">@Html.DisplayNameFor(model => model.Surname)
+        </div>
+        <div class="col-6 px-0">
+             <label asp-for="Surname"> </label>
             <input asp-for="Surname" type="text" class="form-control">
-        </label>
+        </div>
     </div>
 
-    <div class="dateofbirth">
-        <label for="dateofbirth">@Html.DisplayNameFor(model => model.DateOfBirth)
-            <input asp-for="DateOfBirth" type="date" class="form-control">
-        </label>
+    <div class="row">
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" type="date" class="form-control">
     </div>
 
-    <div class="email">
-        <label for="email">@Html.DisplayNameFor(model => model.Email)
-            <input asp-for="Email" type="email" class="form-control">
-        </label>
+    <div class="row">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" class="form-control">
     </div>
 
-    <div class="street">
-        <label for="street">@Html.DisplayNameFor(model => model.Street)
+    <div class="row">
+        <div class="col-6 pl-0">
+            <label asp-for="Hometelephone"></label>
+            <input asp-for="Hometelephone" type="text" class="form-control">
+        </div>
+        <div class="col-6 px-0">
+             <label asp-for="Mobilephone"></label>
+            <input asp-for="Mobilephone" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 pl-0">
+            <label asp-for="Street"></label>
             <input asp-for="Street" type="text" class="form-control">
-        </label>
+        </div>
+        <div class="col-4 px-0">
+            <label asp-for="Housenumber"></label>
+            <input asp-for="Housenumber" type="text" class="form-control">
+        </div>
     </div>
 
-    <div class="housnumber">
-        <label for="housnumber">@Html.DisplayNameFor(model => model.Housenumber)
-            <input asp-for="Housenumber" type="number" class="form-control">
-        </label>
-    </div>
-
-    <div class="zipcode">
-        <label for="zipcode">@Html.DisplayNameFor(model => model.Zipcode)
-            <input asp-for="Zipcode" type="number" class="form-control">
-        </label>
-    </div>
-
-    <div class="city">
-        <label for="city">@Html.DisplayNameFor(model => model.City)
+    <div class="row">
+        <div class="col-6 pl-0"> 
+            <label asp-for="Zipcode"></label>
+            <input asp-for="Zipcode" type="text" class="form-control">
+        </div>
+        <div class="col-6 px-0">
+            <label asp-for="City"></label>
             <input asp-for="City" type="text" class="form-control">
-        </label>
+        </div>
     </div>
 
+    </div>
+    <div class="col-6">
+
+    </div>
 </div>
 
 
@@ -59,13 +71,3 @@
     <button type="submit" class="btn btn-secondary">Speichern</button>
 </div>
 </form>
-
-<template id="input">
-
-</template>
-
-
-
-
-
-@*  *@
