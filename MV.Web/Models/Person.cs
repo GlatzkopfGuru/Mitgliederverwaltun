@@ -11,21 +11,18 @@ namespace MV.Web.Models
     }
     public int ID { get; set; }
 
-    [StringLength(25)]
-    [DisplayName("Vorname")]
+    [StringLength(25), DisplayName("Vorname"), Required]
     public string Firstname { get; set; }
 
     [Required, StringLength(25)]
     [DisplayName("Nachname")]
     public string Surname { get; set; }
 
-    [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd.MM.yy}")]
-    [DisplayName("Geburtsdatum")]
+    // ---- contact ------
+    [DataType(DataType.Date, ErrorMessage = "This is wrong"), DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}",ApplyFormatInEditMode = true,NullDisplayText = "dd/MM/yyyy" ),Required, DisplayName("Geburtsdatum")]
     public DateTime DateOfBirth { get; set; }
 
-    // ---- contact ------
-    [EmailAddress]
-    [DisplayName("E-Mail")]
+    [DataType(DataType.EmailAddress, ErrorMessage = "This is a wrong Email format"), EmailAddress, DisplayName("Email")]
     public string Email { get; set; }
 
     [Phone]

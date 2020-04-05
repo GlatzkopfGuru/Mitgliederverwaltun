@@ -45,7 +45,15 @@ namespace MV.Web.Controllers
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Person person)
     {
-      return RedirectToAction("Create");
+      if (ModelState.IsValid)
+      {
+        await _context.Persons.AddAsync(person);
+        await _context.SaveChangesAsync();
+
+        return View("Index");
+      }
+
+      return View(person);
     }
 
   }
