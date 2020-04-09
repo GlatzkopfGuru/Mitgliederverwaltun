@@ -5,6 +5,8 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Views\Membership\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
+    <Folder Include="ModelBinder\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.3" />

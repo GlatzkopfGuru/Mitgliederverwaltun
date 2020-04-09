@@ -1,0 +1,69 @@
+﻿@model Person
+
+<div>
+    @Html.HiddenFor(p => p.ID)
+    <div class="row">
+        <div class="col-6 pl-0">
+            <label asp-for="Firstname"> </label>
+            <input asp-for="Firstname" type="text" class="form-control">
+            <span asp-validation-for="Firstname" class="text-danger"></span>
+        </div>
+        <div class="col-6 px-0">
+            <label asp-for="Surname"> </label>
+            <input asp-for="Surname" type="text" class="form-control">
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" class="form-control">
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" type="email" class="form-control">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-6 pl-0">
+            <label asp-for="Hometelephone"></label>
+            <input asp-for="Hometelephone" class="form-control">
+            <span asp-validation-for="Hometelephone" class="text-danger"></span>
+        </div>
+        <div class="col-6 px-0">
+            <label asp-for="Mobilephone"></label>
+            <input asp-for="Mobilephone" class="form-control">
+            <span asp-validation-for="Mobilephone" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-8 pl-0">
+            <label asp-for="Street"></label>
+            <input asp-for="Street" type="text" class="form-control">
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+        <div class="col-4 px-0">
+            <label asp-for="Housenumber"></label>
+            <input asp-for="Housenumber" type="text" class="form-control">
+            <span asp-validation-for="Housenumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 pl-0">
+            <label asp-for="Zipcode"></label>
+            <input asp-for="Zipcode" class="form-control">
+            <span asp-validation-for="Zipcode" class="text-danger"></span>
+        </div>
+        <div class="col-6 px-0">
+            <label asp-for="City"></label>
+            <input asp-for="City" type="text" class="form-control">
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+    </div>
+
+</div>

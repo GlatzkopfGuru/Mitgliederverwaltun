@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+using MV.Web.ModelBinder;
 
 namespace MV.Web.Models
 {
@@ -22,17 +24,19 @@ namespace MV.Web.Models
 
     public int ID { get; set; }
 
-    [DisplayName("Eintritsdatum"), DataType(DataType.Date)]
+    [DataType(DataType.Date, ErrorMessage = "This is wrong"), DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true, NullDisplayText = "dd/MM/yyyy"), Required, DisplayName("Eintrittsdatum")]
+    [ModelBinder(typeof(DateTimeModelBinder))]
     public DateTime CreationDate { get; set; }
 
     [DisplayName("Status")]
     public MembershipState State { get; set; }
 
-    [DisplayName("Mitglieds Nr")]
+    [DisplayName("Mitglieds Nr"), Required]
     public int MembershipNo { get; set; }
 
     [DisplayName("Mitglieder")]
     public ICollection<Person> Members { get; set; }
 
+    public int MembershipTypeID { get; set; }
   }
 }

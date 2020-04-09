@@ -30,6 +30,12 @@ namespace MV.Web.Data
 
       Context.SaveChanges();
 
+      var MembershipType1 = new MembershipType() { Name = "Solo Mitgliedschaft", Price = 55.0, PaymentInterval = 12 };
+      var MembershipType2 = new MembershipType() { Name = "Familien Mitgliedschaft", Price = 95.0, PaymentInterval = 12 };
+
+      Context.MembershipTypes.Add(MembershipType1);
+      Context.MembershipTypes.Add(MembershipType2);
+      Context.SaveChanges();
     }
   }
 }

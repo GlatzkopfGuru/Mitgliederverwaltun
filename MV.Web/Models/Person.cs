@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+using MV.Web.ModelBinder;
 
 namespace MV.Web.Models
 {
@@ -20,12 +22,13 @@ namespace MV.Web.Models
 
     // ---- contact ------
     [DataType(DataType.Date, ErrorMessage = "This is wrong"), DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}",ApplyFormatInEditMode = true,NullDisplayText = "dd/MM/yyyy" ),Required, DisplayName("Geburtsdatum")]
+    [ModelBinder(typeof(DateTimeModelBinder))]
     public DateTime DateOfBirth { get; set; }
 
     [DataType(DataType.EmailAddress, ErrorMessage = "This is a wrong Email format"), EmailAddress, DisplayName("Email")]
     public string Email { get; set; }
 
-    [Phone]
+    [Phone, DataType(DataType.PhoneNumber)]
     [DisplayName("Mobiltelefon")]
     public string Mobilephone { get; set; }
 
@@ -46,7 +49,7 @@ namespace MV.Web.Models
     public string IsoCountryCode { get; set; }
 
     [StringLength(10)]
-    [DisplayName("PLZ")]
+    [DisplayName("PLZ"), DataType(DataType.PostalCode)]
     public string Zipcode { get; set; }
 
     [StringLength(35)]

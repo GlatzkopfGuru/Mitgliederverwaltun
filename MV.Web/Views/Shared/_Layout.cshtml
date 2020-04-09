@@ -6,7 +6,22 @@
     <title>@ViewData["Title"] - MV.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    @RenderSection("Scripts", required: false)
+
+    <script src="~/lib/MomentJS/moment.js"></script>
+    <script src="~/js/Validator.js"></script>
+
 </head>
+
+
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -43,17 +58,10 @@
             &copy; 2020 - MV.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
 
-    <script src="~/lib/MomentJS/moment.js"></script>
-
-    <script>
+    
 
 
-        $.validator.methods.date = function (value, element) {
-            return this.optional(element) || moment(value, "DD.MM.YYYY", true).isValid();
-        }</script>
+
 </body>
 </html>

@@ -1,95 +1,21 @@
-@model MV.Web.Models.Person
+@model MV.Web.Models.Membership
+
 
 <h1> Neue Mitgliedschaft </h1>
 
 <form asp-action="Create" class="needs-validation" novalidate>
-    <div class="form-group">
-        <div class="col-6">
-
-            <div class="row">
-                <div class="col-6 pl-0">
-                    <label asp-for="Firstname"> </label>
-                    <input asp-for="Firstname" type="text" class="form-control">
-                    <span asp-validation-for="Firstname" class="text-danger"></span>
-                </div>
-                <div class="col-6 px-0">
-                    <label asp-for="Surname"> </label>
-                    <input asp-for="Surname" type="text" class="form-control">
-                    <span asp-validation-for="Surname" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <label asp-for="DateOfBirth"></label>
-                <input asp-for="DateOfBirth" type="date" class="form-control">
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-
-            <div class="row">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" type="email" class="form-control">
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-
-            <div class="row">
-                <div class="col-6 pl-0">
-                    <label asp-for="Hometelephone"></label>
-                    <input asp-for="Hometelephone" type="text" class="form-control">
-                    <span asp-validation-for="Hometelephone" class="text-danger"></span>
-                </div>
-                <div class="col-6 px-0">
-                    <label asp-for="Mobilephone"></label>
-                    <input asp-for="Mobilephone" type="text" class="form-control">
-                    <span asp-validation-for="Mobilephone" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-8 pl-0">
-                    <label asp-for="Street"></label>
-                    <input asp-for="Street" type="text" class="form-control">
-                    <span asp-validation-for="Street" class="text-danger"></span>
-                </div>
-                <div class="col-4 px-0">
-                    <label asp-for="Housenumber"></label>
-                    <input asp-for="Housenumber" type="text" class="form-control">
-                    <span asp-validation-for="Housenumber" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-6 pl-0">
-                    <label asp-for="Zipcode"></label>
-                    <input asp-for="Zipcode" type="text" class="form-control">
-                    <span asp-validation-for="Zipcode" class="text-danger"></span>
-                </div>
-                <div class="col-6 px-0">
-                    <label asp-for="City"></label>
-                    <input asp-for="City" type="text" class="form-control">
-                    <span asp-validation-for="City" class="text-danger"></span>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-6">
-
-        </div>
+    <div style="margin-bottom:10px" class="form-group">
+        @Html.EditorFor(m => m)
     </div>
-
-
+    
     <div>
         <button type="submit" class="btn btn-secondary">Speichern</button>
     </div>
 </form>
 
 
+
 @section scripts
 {
     <partial name="_ValidationScriptsPartial" />
 }
-
-<template id="input">
-
-</template>
-
-

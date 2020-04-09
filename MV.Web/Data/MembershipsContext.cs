@@ -12,12 +12,15 @@ namespace MV.Web.Data
     }
 
     public DbSet<Membership> Memberships { get; set; }
+    public DbSet<MembershipType> MembershipTypes { get; set; }
     public DbSet<Person> Persons { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Membership>().ToTable("Membership");
       modelBuilder.Entity<Person>().ToTable("Person");
+      modelBuilder.Entity<MembershipType>().ToTable("MembershipType");
+      modelBuilder.Entity<MembershipTypePersonRestriction>().ToTable("MembershipTypePersonRestriction");
     }
   }
 }

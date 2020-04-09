@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MV.Web.Data;
@@ -24,9 +25,10 @@ namespace MV.Web.Controllers
       _context = membershipsContext;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-      return View(await _context.Memberships.ToListAsync());
+      var members = _context.Memberships.ToList();
+      return View(members);
     }
 
     public async Task<IActionResult> Details(int? Id)
@@ -38,22 +40,39 @@ namespace MV.Web.Controllers
     [HttpGet]
     public IActionResult Create()
     {
-      return View();
+      var membership = new Membership()
+      {
+        Members = new List<Person> { new Person() }
+      };
+
+      ViewBag.MembershipTypeList = GetMembershipTypeSelectList();
+
+      return View(membership);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Person person)
+    public async Task<IActionResult> Create(Membership membership)
     {
       if (ModelState.IsValid)
       {
-        await _context.Persons.AddAsync(person);
+
+        await _context.Memberships.AddAsync(membership);
         await _context.SaveChangesAsync();
 
-        return View("Index");
+        return RedirectToAction("Index");
       }
 
-      return View(person);
+      ViewBag.MembershipTypeList = GetMembershipTypeSelectList();
+      return View(membership);
+    }
+
+
+
+
+    private IEnumerable<SelectListItem> GetMembershipTypeSelectList()
+    {
+      return new SelectList(_context.MembershipTypes, "ID", "Name");
     }
 
   }
