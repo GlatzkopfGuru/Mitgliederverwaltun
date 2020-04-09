@@ -42,7 +42,8 @@ namespace MV.Web.Controllers
     {
       var membership = new Membership()
       {
-        Members = new List<Person> { new Person() }
+        Members = new List<Person> { new Person() },
+        CreationDate = DateTime.Now
       };
 
       ViewBag.MembershipTypeList = GetMembershipTypeSelectList();

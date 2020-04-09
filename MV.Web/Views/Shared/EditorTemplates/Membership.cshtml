@@ -55,10 +55,10 @@
             <script>
             var NameHeaderFunction = function () {
                 var Name = "";
-                var FirstName = $('div[id="Person_Collapse_@Index"]').find('input[name="Membership[@Index].Firstname"]').val();
+                var FirstName = $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Firstname"]').val();
                 if (FirstName != null && FirstName != "")
                     Name = FirstName;
-                var Surname = $('div[id="Person_Collapse_@Index"]').find('input[name="Membership[@Index].Surname"]').val();
+                var Surname = $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Surname"]').val();
                 if (Surname != null && Surname != "") {
                     if (Name == "")
                         Name = Surname;
@@ -75,8 +75,8 @@
             };
 
 
-            $('div[id="Person_Collapse_@Index"]').find('input[name="Membership[@Index].Firstname"]').change(NameHeaderFunction);
-            $('div[id="Person_Collapse_@Index"]').find('input[name="Membership[@Index].Surname"]').change(NameHeaderFunction);
+            $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Firstname"]').change(NameHeaderFunction);
+            $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Surname"]').change(NameHeaderFunction);
             </script>
         }
     </div>
