@@ -15,8 +15,8 @@ namespace MV.Web.Models
     public int? MinCount { get; set; }
     public int? MaxCount { get; set; }
 
-    public double? MinAge { get; set; }
-    public double? MaxAge { get; set; }
+    public int? MinAge { get; set; }
+    public int? MaxAge { get; set; }
 
     public int MembershipTypeID { get; set; }
   }

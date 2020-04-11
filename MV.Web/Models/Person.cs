@@ -23,7 +23,7 @@ namespace MV.Web.Models
     // ---- contact ------
     [DataType(DataType.Date, ErrorMessage = "This is wrong"), DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}",ApplyFormatInEditMode = true,NullDisplayText = "dd/MM/yyyy" ),Required, DisplayName("Geburtsdatum")]
     [ModelBinder(typeof(DateTimeModelBinder))]
-    public DateTime DateOfBirth { get; set; }
+    public DateTime? DateOfBirth { get; set; }
 
     [DataType(DataType.EmailAddress, ErrorMessage = "This is a wrong Email format"), EmailAddress, DisplayName("Email")]
     public string Email { get; set; }

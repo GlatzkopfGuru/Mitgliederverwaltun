@@ -14,6 +14,7 @@ namespace MV.Web.Data
     public DbSet<Membership> Memberships { get; set; }
     public DbSet<MembershipType> MembershipTypes { get; set; }
     public DbSet<Person> Persons { get; set; }
+    public DbSet<MembershipTypePersonRestriction> MembershipTypePersonRestrictions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

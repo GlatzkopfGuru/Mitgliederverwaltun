@@ -1,4 +1,23 @@
 @model MV.Web.Models.Membership
+<script>$(document).ready(function () {
+        $("#MembershipTypeDDL").on("change", function () {
+            $.ajax(
+                {
+                    url: '/Membership/GetDefaultPersons?MembershipTypeId=' + $(this).val(),
+                    type: 'GET',
+                    data: "",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        $("#Persons_Container").html(data);
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+        });
+
+
+    });</script>
 
 
 <h1> Neue Mitgliedschaft </h1>
@@ -7,7 +26,7 @@
     <div style="margin-bottom:10px" class="form-group">
         @Html.EditorFor(m => m)
     </div>
-    
+
     <div>
         <button type="submit" class="btn btn-secondary">Speichern</button>
     </div>

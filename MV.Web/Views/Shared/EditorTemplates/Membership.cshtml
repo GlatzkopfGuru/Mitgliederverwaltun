@@ -11,7 +11,7 @@
 
         <div class="row">
             <label asp-for="MembershipTypeID"></label>
-            @Html.DropDownListFor(m => m.MembershipTypeID, ViewBag.MembershipTypeList as SelectList, "Auswählen", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.MembershipTypeID, ViewBag.MembershipTypeList as SelectList, "Auswählen", new { @class = "form-control", id="MembershipTypeDDL" })
             <span asp-validation-for="MembershipTypeID" class="text-danger"></span>
         </div>
 
@@ -32,53 +32,11 @@
 
     </div>
 
-    <div class="col-6 mr-0">
-        @for (int Index = 0; Index < Model.Members.Count; Index++)
-        {
-            <div class="card mb-3">
-                <div class="card-header p-0" id="Person_Heading_@Index">
-                    <h4>
-                        <button id="Person_Heading_Btn_@Index" class="btn" type="button" data-toggle="collapse" data-target="#Person_Collapse_@Index" aria-expanded="true" aria-controls="Person_Collapse_@Index">
-                            Neue Person
-                        </button>
-                    </h4>
-                </div>
-
-                <div id="Person_Collapse_@Index" class="collapse show" aria-labelledby="Person_Heading_@Index">
-                    <div class="card-body">
-                        
-                        @Html.EditorFor(model => model.Members)
-                    </div>
-                </div>
-            </div>
-
-            <script>
-            var NameHeaderFunction = function () {
-                var Name = "";
-                var FirstName = $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Firstname"]').val();
-                if (FirstName != null && FirstName != "")
-                    Name = FirstName;
-                var Surname = $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Surname"]').val();
-                if (Surname != null && Surname != "") {
-                    if (Name == "")
-                        Name = Surname;
-                    else
-                        Name += " " + Surname;
-                }
-
-                if (Name == "")
-                    Name = "Neue Person";
-
-
-                $('button[id="Person_Heading_Btn_@Index"]').html(Name);
-                console.log("I have done something");
-            };
-
-
-            $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Firstname"]').change(NameHeaderFunction);
-            $('div[id="Person_Collapse_@Index"]').find('input[name="Members[@Index].Surname"]').change(NameHeaderFunction);
-            </script>
-        }
+    <div id="Persons_Container" class="col-6 mr-0">
+        <span asp-validation-for="Members" class="text-danger"></span>
+        @await Html.PartialAsync("EditorTemplates/Persons", Model.Members)
     </div>
+
+
 </div>
 

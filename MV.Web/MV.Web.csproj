@@ -7,6 +7,8 @@
     <Folder Include="Views\Membership\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
     <Folder Include="ModelBinder\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.3" />

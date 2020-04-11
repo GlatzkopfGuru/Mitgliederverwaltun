@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using MV.Web.ModelBinder;
+using MV.Web.Validation;
 
 namespace MV.Web.Models
 {
@@ -34,9 +35,10 @@ namespace MV.Web.Models
     [DisplayName("Mitglieds Nr"), Required]
     public int MembershipNo { get; set; }
 
-    [DisplayName("Mitglieder")]
+    [DisplayName("Mitglieder"), PersonRestriction]
     public ICollection<Person> Members { get; set; }
 
     public int MembershipTypeID { get; set; }
+    public MembershipType MembershipType { get; set; }
   }
 }

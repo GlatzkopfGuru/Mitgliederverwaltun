@@ -42,13 +42,11 @@ namespace MV.Web.Controllers
     {
       var membership = new Membership()
       {
-        Members = new List<Person> { new Person() },
+        Members = new List<Person>(),
         CreationDate = DateTime.Now
       };
 
-      ViewBag.MembershipTypeList = GetMembershipTypeSelectList();
-
-      return View(membership);
+      return RenderMembershipCreation(membership);
     }
 
     [HttpPost]
@@ -64,9 +62,32 @@ namespace MV.Web.Controllers
         return RedirectToAction("Index");
       }
 
-      ViewBag.MembershipTypeList = GetMembershipTypeSelectList();
-      return View(membership);
+      return RenderMembershipCreation(membership);
     }
+
+    public PartialViewResult GetDefaultPersons(int? MembershipTypeId)
+    {
+      var membershipType = _context.MembershipTypes.Include(t => t.PersonRestrictions).FirstOrDefault(t => t.ID == MembershipTypeId);
+
+      int personCount = 0;
+      if (membershipType != null)
+        personCount = membershipType.PersonRestrictions.Sum(rest => rest.MaxCount ?? 0);
+
+      var PersonList = new List<Person>();
+      for (int i = 0; i < personCount; i++)
+      {
+        PersonList.Add(new Person());
+      }
+      return PartialView("EditorTemplates/Persons", PersonList);
+    }
+
+    [HttpPost]
+    public PartialViewResult AddPerson([FromBody]ICollection<Person> Persons)
+    {
+      Persons.Add(new Person());
+      return PartialView("EditorTemplates/Persons", Persons);
+    }
+
 
 
 
@@ -74,6 +95,12 @@ namespace MV.Web.Controllers
     private IEnumerable<SelectListItem> GetMembershipTypeSelectList()
     {
       return new SelectList(_context.MembershipTypes, "ID", "Name");
+    }
+
+    private IActionResult RenderMembershipCreation(Membership membership)
+    {
+      ViewBag.MembershipTypeList = GetMembershipTypeSelectList();
+      return View("Create", membership);
     }
 
   }
