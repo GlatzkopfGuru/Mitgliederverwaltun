@@ -1,6 +1,6 @@
 ﻿@model Membership
-<div class="row">
 
+<div class="row">
     <div class="col-6">
 
         <div class="row">
@@ -11,13 +11,13 @@
 
         <div class="row">
             <label asp-for="MembershipTypeID"></label>
-            @Html.DropDownListFor(m => m.MembershipTypeID, ViewBag.MembershipTypeList as SelectList, "Auswählen", new { @class = "form-control", id="MembershipTypeDDL" })
+            @Html.DropDownListFor(m => m.MembershipTypeID, ViewBag.MembershipTypeList as SelectList, new { @class = "form-control", id="MembershipTypeDDL" })
             <span asp-validation-for="MembershipTypeID" class="text-danger"></span>
         </div>
 
         <div class="row">
             <label asp-for="State"></label>
-            @Html.DropDownListFor(m => m.State, Html.GetEnumSelectList(typeof(MembershipState)), "Auswählen", new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.State, Html.GetEnumSelectList(typeof(MembershipState)), new { @class = "form-control" })
             <span asp-validation-for="State" class="text-danger"></span>
         </div>
 
@@ -27,16 +27,12 @@
             <span asp-validation-for="CreationDate" class="text-danger"></span>
         </div>
 
-
-
-
     </div>
 
-    <div id="Persons_Container" class="col-6 mr-0">
+    <div id="Persons_Container" class="col-6">
         <span asp-validation-for="Members" class="text-danger"></span>
         @await Html.PartialAsync("EditorTemplates/Persons", Model.Members)
     </div>
-
 
 </div>
 

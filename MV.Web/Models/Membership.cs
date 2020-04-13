@@ -32,12 +32,13 @@ namespace MV.Web.Models
     [DisplayName("Status")]
     public MembershipState State { get; set; }
 
-    [DisplayName("Mitglieds Nr"), Required]
+    [DisplayName("Mitgliedsnummer"), Required]
     public int MembershipNo { get; set; }
 
     [DisplayName("Mitglieder"), PersonRestriction]
     public ICollection<Person> Members { get; set; }
 
+    [DisplayName("Art der Mitgliedschaft")]
     public int MembershipTypeID { get; set; }
     public MembershipType MembershipType { get; set; }
   }
