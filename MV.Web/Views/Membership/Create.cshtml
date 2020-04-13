@@ -19,16 +19,18 @@
 
     });</script>
 
-
+<div class="row">
 
 <h1 id="Headline"> Neue Mitgliedschaft </h1>
+</div>
+
 
 <form asp-action="Create" class="needs-validation" id="MembershipForm"  novalidate>
     <div style="margin-bottom:10px" class="form-group">
         @Html.EditorFor(m => m)
     </div>
 
-    <div>
+    <div class="row">
         <button type="submit" class="btn btn-secondary">Speichern</button>
         <button class="btn" type="button" id="AddPerson" onclick="AddPersonFunc()">Add Person</button>
     </div>
