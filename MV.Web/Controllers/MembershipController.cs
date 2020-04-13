@@ -81,11 +81,10 @@ namespace MV.Web.Controllers
       return PartialView("EditorTemplates/Persons", PersonList);
     }
 
-    [HttpPost]
-    public PartialViewResult AddPerson([FromBody]ICollection<Person> Persons)
+    [HttpGet]
+    public PartialViewResult AddPerson()
     {
-      Persons.Add(new Person());
-      return PartialView("EditorTemplates/Persons", Persons);
+      return PartialView("EditorTemplates/Person", new Person());
     }
 
 

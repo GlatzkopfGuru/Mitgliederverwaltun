@@ -20,19 +20,44 @@
     });</script>
 
 
-<h1> Neue Mitgliedschaft </h1>
 
-<form asp-action="Create" class="needs-validation" novalidate>
+<h1 id="Headline"> Neue Mitgliedschaft </h1>
+
+<form asp-action="Create" class="needs-validation" id="MembershipForm"  novalidate>
     <div style="margin-bottom:10px" class="form-group">
         @Html.EditorFor(m => m)
     </div>
 
     <div>
         <button type="submit" class="btn btn-secondary">Speichern</button>
+        <button class="btn" type="button" id="AddPerson" onclick="AddPersonFunc()">Add Person</button>
     </div>
 </form>
 
-
+<script>
+    function AddPersonFunc() {
+        var da = $('#Persons_Container').find(':input').find('.form-control').serialize();
+        var daa = $('#Persons_Container').find(':input');
+        var db = $('#Persons_Container');
+        var dc = $(':input');
+        var dd = $('Persons_Container.form-control:input');
+        console.log(da);
+        $.ajax({
+            url: '/Membership/AddPerson',
+            type: 'POST',
+            data: da,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("#Persons_Container").html(data);
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+        return false;
+    }
+</script>
 
 @section scripts
 {
